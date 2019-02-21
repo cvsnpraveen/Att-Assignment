@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.jumbotron {
+    padding: 2rem 1rem;
+    
+}
+.container-fluid .nav.nav-pills .nav-item {
+    max-width: 75%;
+}
+
+/* form Styles */
+
+.invalid-field {
+ border: 1px solid red;
+}
+.error-message {
+    color: red;
+}
