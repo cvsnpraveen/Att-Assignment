@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-md-1 col-sm-3">
+            <h4>Welcome, {{userDetails && userDetails.name}} !!</h4> <br />
+            <ul class="nav nav-pills flex-column">
+                <li *ngIf="isAdmin" class="nav-item" routerLink="/userDashboard/create" routerLinkActive="Active">Create an organization</li>
+                <li *ngIf="isAdmin" class="nav-item" routerLink="/userDashboard/viewAll" routerLinkActive="Active"> View All Organizations </li>
+                <li *ngIf="!isAdmin" class="nav-item" routerLink="/userDashboard/view" routerLinkActive="Active"> View Profile </li>
+                <li *ngIf="!isAdmin" class="nav-item" routerLink="/userDashboard/change" routerLinkActive="Active"> Change Password </li>
+                <li class="nav-item" (click)="onLogout()"> Logout </li>
+            </ul>
+            <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-7">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

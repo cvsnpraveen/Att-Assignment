@@ -1,0 +1,22 @@
+<h4>Organization Profile</h4>
+<hr>
+<table *ngIf="userDetail" class="table table-bordered active">
+    <thead>
+      <tr>
+          <th>Organization Name</th>
+          <th>Organization Type</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{userDetail.name}}</td>
+          <td>{{userDetail.type}}</td>
+          <td>{{userDetail.phone}}</td>
+          <td>{{userDetail.email}}</td>
+          <td>{{userDetail.status}}</td>
+        </tr>
+    </tbody>
+  </table>

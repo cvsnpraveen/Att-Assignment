@@ -1,24 +1,29 @@
 <h3>Login Here</h3>
 <hr><br />
-<form #loginForm='ngForm'>
+<div *ngIf="serverErrorMessage && serverErrorMessage.length>0" class="alert alert-danger">
+  {{serverErrorMessage}}
+</div>
+<form #loginForm='ngForm' (ngSubmit)="loginForm.valid && onSubmit(loginForm)">
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" class="form-control"
-      placeholder="Email" name="email" required [pattern]="emailRegex" [ngClass]="{'invalid-field': loginForm.submitted && !email.valid}">
-      <div *ngIf="loginForm.submitted && email.errors">
-        <label *ngIf="email.errors.required" class="error-message">Please enter email</label>
-        <label *ngIf="email.errors.pattern" class="error-message">Please enter a valid email</label>
-      </div>
+      placeholder="Email" name="email" required [pattern]="emailRegex"
+      [ngClass]="{'invalid-field': loginForm.submitted && !email.valid}">
+    <div *ngIf="loginForm.submitted && email.errors">
+      <label *ngIf="email.errors.required" class="error-message">Please enter email</label>
+      <label *ngIf="email.errors.pattern" class="error-message">Please enter a valid email</label>
+    </div>
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
     <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" class="form-control"
-      placeholder="Password" minlength="4" name="password" required [ngClass]="{'invalid-field': loginForm.submitted && !password.valid}">
-      <div *ngIf="loginForm.submitted && password.errors">
-          <label *ngIf="password.errors.required" class="error-message">Please enter Password</label>
-          <label *ngIf="password.errors.minlength" class="error-message">Enter atleast 4 characters</label>
-      </div>
-  
+      placeholder="Password" minlength="4" name="password" required
+      [ngClass]="{'invalid-field': loginForm.submitted && !password.valid}">
+    <div *ngIf="loginForm.submitted && password.errors">
+      <label *ngIf="password.errors.required" class="error-message">Please enter Password</label>
+      <label *ngIf="password.errors.minlength" class="error-message">Enter atleast 4 characters</label>
+    </div>
+
   </div>
   <div class="form-group text-right">
     <button type="submit" class="btn btn-primary">Submit</button>

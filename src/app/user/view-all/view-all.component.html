@@ -1,0 +1,31 @@
+<h4>View All Organizations</h4>
+<hr>
+<table class="table table-hover col-sm-12" *ngIf="users">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Organization Name</th>
+            <th scope="col">Organization Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+            <th>{{i+1}}</th>
+            <td><input type="text" [readonly]="user.status==='Inactive'" class="form-control" #name="ngModel" [(ngModel)]="user.name"/></td>
+            <td>
+                <select class="form-control" [disabled]="user.status==='Inactive'" #type="ngModel" [(ngModel)]="user.type">
+                    <option name="" value="">Select Type</option>
+                    <option name="" value="Logistics">Logistics</option>
+                    <option name="" value="Hospital">Hospital</option>
+                    <option name="" value="Lab">Lab</option>
+                </select>
+            </td>
+            <td>{{user.status}}</td>
+            <td [ngClass]="{'fld_inactive': user.status==='Inactive'}"><a href="#">&#x270d;</a></td>
+            <td><a class="delete" (click)="deleteUser(user)">&#x2718;</a></td>
+        </tr>
+    </tbody>
+</table>

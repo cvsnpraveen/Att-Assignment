@@ -12,6 +12,25 @@
 .invalid-field {
  border: 1px solid red;
 }
-.error-message {
+.error-message, .validation-message {
     color: red;
+}
+.nav-item{
+    background: #fff;
+    color: #000;
+    padding: 2px 5px;
+    margin: 2px 1px;
+    width: 180px;
+    cursor: pointer;
+}
+.nav-item:hover, .nav-item.Active {
+    background: #007bff;
+    border-radius: 3px;
+    color: #fff;
+}
+.fld_inactive{
+    pointer-events: none;
+}
+.delete{
+    cursor: pointer;
 }
